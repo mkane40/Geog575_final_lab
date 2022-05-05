@@ -5,11 +5,11 @@
 //create  map
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: 2.4,
+    minZoom: 3,
     maxZoom: 6,
 });
 map.zoomControl.setPosition('topleft');
-var bounds = [[50,102], [-50,-100]];
+var bounds = [[50,104], [-50,-102]];
 map.fitBounds(bounds);
 
 var image = L.imageOverlay('assets/hockey-rinks.png', bounds).addTo(map);
@@ -38810,6 +38810,8 @@ var idToLayer = {};
 var titleToId = {};
 var idToTitle = {};
 var idToText = {};
+var idToOther = {};
+var idToOther_0 = {};
 
 // Declare updatePanel: open panel, update panel button inner HTML and update content with updateContent(), depending on mId
 var updatePanel = function(mId){
@@ -38820,9 +38822,13 @@ var updatePanel = function(mId){
   // Store marker title and text in variables
   var markerTitle = idToTitle[mId];
   var markerText = idToText[mId];
+  var markerOther = idToOther[mId];
+  var markerOther_0 = idToOther_0[mId];
   // Update panel content with marker title and text
   $('#panelTitle').text(markerTitle);
   $('#panelText').text(markerText);
+  $('#panelOther').text(markerOther);
+  $('#panelOther_0').text(markerOther_0);
 };
 
 // Declare markerOnClick: 
@@ -38839,18 +38845,20 @@ var markerOnClick = function(){
 
 $.each(markers, function(key, val) {
     var markerOptions = {markerId: key,
-                        markerTitle: val['shotType'],
-                        markerText: val['shooterName'],
+                        markerTitle: val['shooterName'],
+                        markerText: val['shotType'],
+                        markerOther: val['shooterLeftRight'],
+                        markerOther_0: val['event'],
                         icon: markerpoint};
     var marker = L.marker(val['coords'],  markerOptions).addTo(map);
-    
+    console.log(marker)
     // Set popup options
-    var popupContent = 'Shot Type: ' + val['shotType'] + ' / By: ' + val['shooterName'] ;
+    var popupContent =   val['shooterName'] + ', Shot Type: ' + val['shotType'] + ', Result: ' + val['event'] + ', ' + val['shooterLeftRight'] + ' Handed';
     // Bind popup to marker click
     marker.bindPopup(popupContent);
 
      // Create a list of marker titles 
-    titlesList.push(val['shotType']);
+    titlesList.push(val['shooterName']);
 
     // Call markerOnClick when event click on marker 
     marker.on('click', markerOnClick);
@@ -38860,11 +38868,13 @@ $.each(markers, function(key, val) {
 
     // -- Append dictionaries --
     //{key:'title',value:id}  
-    titleToId[val['shotType']] = key;
+    titleToId[val['shooterName']] = key;
     //{key:id,value:'title'} 
-    idToTitle[key] = 'Shot Type: ' + val['shotType'];  
+    idToTitle[key] = 'Player - ' + val['shooterName'];  
     // {key:id,value:'text'}  
-    idToText[key] = 'Player Name: ' + val['shooterName'];
+    idToText[key] = 'Shot Type: ' + val['shotType'];
+    idToOther[key] = 'Left or Right Handed Player: ' + val['shooterLeftRight'];
+    idToOther_0[key] = 'Shot Result: ' + val['event'];
 
 });
 

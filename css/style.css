@@ -1,5 +1,17 @@
+.fixed-header{
+  width: 100%;
+  position: fixed;        
+  background:  rgb(0, 20, 37);
+  padding: 50px 0;
+  color: rgb(150, 216, 216, .85);
+}
+
+.fixed-header{
+  top: 0;
+}
+
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
-    background-color:hsl(180, 100%, 27%, .85);
+    background-color:rgb(150, 216, 216, .85);
     margin: 0.1em 0;
     font-size: xx-large;
     font-family: monospace;
@@ -10,14 +22,12 @@
 
 #map {
     height: 800px;
-    width: 1800px;
+    width: 1640px;
     position: fixed;
-    right: 255px;
-    top: 250px;
+    right: 10px;
+    bottom: 0px;
     z-index: 401;
-   
 }
-
   
   @media only screen and (min-width: 501px) {
       .input-group {
@@ -28,6 +38,7 @@
   /* Open/close panel button */
   #panelBtn{
     position:fixed;
+    top: 270px;
     z-index: 401;
     font-family: monospace;
     font-size: xx-large;
@@ -38,12 +49,17 @@
     z-index: 401;
     width: 100vw;
     left: -500px;
-    top:100px;
+    top: 325px;
     bottom: 0;
     overflow-y: scroll;
-    background: #FFFFFF;
-    transition: all 0.3s; /* gives a "sliding" effect */
+    transition: all 0.5s; 
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),url(/assets/Seattle_Kraken_logo.png);
   }
+#panel::backdrop{
+    content: "";
+    opacity: 30%;
+    background: #9e1414;
+}
   
   @media only screen and (min-width: 500px) {
       #panel {

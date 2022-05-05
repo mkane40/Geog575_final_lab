@@ -21,20 +21,29 @@
 </head>
 
 <body>
-
+  
+  <div class="fixed-header">
+    <div class="container">
+        <h1><img src="/assets/Seattle_Kraken_logo.png" alt="" width="10%" height="10%" role="img">Seattle Kraken</h1>
+        
+    </div>
+</div>
 <!-- Panel button -->
-  <button type="button" id="panelBtn" class="btn btn-info" onclick="togglePanel();">Open Info Panel ></button>
+  <button type="button" id="panelBtn" class="btn btn-danger" onclick="togglePanel();">Open Info Panel ></button>
 <!-- /Panel button -->
  
 <!-- Panel --> 
   <div id="panel">
     <!-- Dissmiss button to close Sidepanel -->
-    <button class="btn btn-info" type="button" id="closeBtn" onclick="closePanel();">
+    <button class="btn btn-danger" type="button" id="closeBtn" onclick="closePanel();">
       &times;
     </button>
     <p id="panelContent">
-    <h2 id="panelTitle">Title</h2>
-    <span id="panelText">Text</span>    
+    <h2 id="panelTitle">Player Name</h2>
+    <span id="panelText">Shot Type</span><br>
+    <span id="panelOther_0">Shot Result</span><br>
+    <span id="panelOther">Left or Right Handed Player</span> 
+       
     </p>
   </div>
 <!-- /Panel -->  
