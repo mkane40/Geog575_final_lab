@@ -1,0 +1,92 @@
+{
+  "0": {
+    "arenaAdjustedXCord": 61,
+    "arenaAdjustedYCord": -32,
+    "shooterName": "Steven Stamkos",
+    "shotType": "WRIST",
+    "team": "HOME",
+    "teamCode": "TBL",
+    "coords": [61,-32]
+  },
+  "1": {
+    "arenaAdjustedXCord": -65,
+    "arenaAdjustedYCord": 19,
+    "shooterName": "Brock McGinn",
+    "shotType": "WRIST",
+    "team": "AWAY",
+    "teamCode": "PIT",
+    "coords": [-65,19]
+  },
+  "2": {
+    "arenaAdjustedXCord": -8,
+    "arenaAdjustedYCord": -27,
+    "shooterName": "Jan Rutta",
+    "shotType": "WRIST",
+    "team": "HOME",
+    "teamCode": "TBL",
+    "coords": [-8,-27]
+  },
+  "3": {
+    "arenaAdjustedXCord": -60,
+    "arenaAdjustedYCord": -4,
+    "shooterName": "Danton Heinen",
+    "shotType": "WRIST",
+    "team": "AWAY",
+    "teamCode": "PIT",
+    "coords": [-60,-4]
+  },
+  "4": {
+    "arenaAdjustedXCord": 63,
+    "arenaAdjustedYCord": 4,
+    "shooterName": "Ondrej Palat",
+    "shotType": "WRIST",
+    "team": "HOME",
+    "teamCode": "TBL",
+    "coords": [63,4]
+  },
+  "5": {
+    "arenaAdjustedXCord": -63,
+    "arenaAdjustedYCord": -33,
+    "shooterName": "Mark Friedman",
+    "shotType": "WRIST",
+    "team": "AWAY",
+    "teamCode": "PIT",
+    "coords": [-63,-33]
+  },
+  "6": {
+    "arenaAdjustedXCord": -61,
+    "arenaAdjustedYCord": -10,
+    "shooterName": "Dominik Simon",
+    "shotType": "SLAP",
+    "team": "AWAY",
+    "teamCode": "PIT",
+    "coords": [-61,-10]
+  },
+  "7": {
+    "arenaAdjustedXCord": 64,
+    "arenaAdjustedYCord": 31,
+    "shooterName": "Victor Hedman",
+    "shotType": "WRIST",
+    "team": "HOME",
+    "teamCode": "TBL",
+    "coords": [64,31]
+  },
+  "8": {
+    "arenaAdjustedXCord": -75,
+    "arenaAdjustedYCord": -9,
+    "shooterName": "Bryan Rust",
+    "shotType": "BACK",
+    "team": "AWAY",
+    "teamCode": "PIT",
+    "coords": [-75,-9]
+  },
+  "9": {
+    "arenaAdjustedXCord": -73,
+    "arenaAdjustedYCord": 12,
+    "shooterName": "Drew O'Connor",
+    "shotType": "WRIST",
+    "team": "AWAY",
+    "teamCode": "PIT",
+    "coords": [-73,12]
+  }
+}

@@ -1,0 +1,10 @@
+﻿shotID,arenaAdjustedXCord,arenaAdjustedYCord,shooterName,shotType,team,teamCode,coords
+0,61,-32,Steven Stamkos,WRIST,HOME,TBL,[61,-32]
+1,-65,19,Brock McGinn,WRIST,AWAY,PIT,[-65,19]
+2,-8,-27,Jan Rutta,WRIST,HOME,TBL,[-8,-27]
+3,-60,-4,Danton Heinen,WRIST,AWAY,PIT,[-60,-4]
+4,63,4,Ondrej Palat,WRIST,HOME,TBL,[63,4]
+5,-63,-33,Mark Friedman,WRIST,AWAY,PIT,[-63,-33]
+6,-61,-10,Dominik Simon,SLAP,AWAY,PIT,[-61,-10]
+7,64,31,Victor Hedman,WRIST,HOME,TBL,[64,31]
+8,-75,-9,Bryan Rust,BACK,AWAY,PIT,[-75,-9]
