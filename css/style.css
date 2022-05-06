@@ -43,7 +43,6 @@ footer{
 }
 
 
-
 .leaflet-control-layers {
   margin: 0.1em 0;
   font-size:25pt;
@@ -52,7 +51,7 @@ footer{
 }
 
 .leaflet-control-layers-toggle {
-  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.8)),url(assets/icons8-layers-30.png);
+  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.8)),url(/assets/icons8-layers-30.png);
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
@@ -78,16 +77,15 @@ footer{
       .input-group {
           width: 500px;
       }
-  } /* expand search bar to 100vw on small screens */
-  
-  /* Open/close panel button */
+  } 
+
   #panelBtn{
     position:fixed;
     top: 230px;
     z-index: 401;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: medium;
-  } /* allows panel button to sit on top of content */
+  }
   
   #panel{
     position: fixed;
@@ -98,13 +96,12 @@ footer{
     bottom: 0;
     overflow-y: scroll;
     transition: all 0.4s; 
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)),url(assets/seattlekraken-logo.png);
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)),url(/assets/seattlekraken-logo.png);
     background-size: 90%;
   }
 #panel::backdrop{
     content: "";
     opacity: 30%;
-    background: #9e1414;
 }
   
   @media only screen and (min-width: 500px) {
@@ -112,14 +109,13 @@ footer{
           width: 500px;
           left: -500px;
       }
-  } /* expand sidebar to 100vw on small screens (when active) */
+  }
   
   #panel.active {
       left: 0;
-  } /* show sidebar when active, see JS */
+  } 
   
   
-  /* Autocomplete */
   .ui-widget-content{
     z-index:401;
   }

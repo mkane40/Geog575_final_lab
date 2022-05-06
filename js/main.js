@@ -1,6 +1,4 @@
-/* Map of GeoJSON data from MegaCities.geojson */
-
-//function to instantiate the Leaflet map
+/*hockey shot dist map non-geo data from moneypuck */
 
 //create  map
 var map = L.map('map', {
@@ -11,11 +9,17 @@ var map = L.map('map', {
 });
 map.zoomControl.setPosition('topleft');
 
+// set bounds
 var bounds = [[-52,-104], [52,102]];
 map.fitBounds(bounds);
 
+// add rink img background
 var image = L.imageOverlay('assets/hockey-rinks.png', bounds).addTo(map);
 
+
+// var markers = $.getJSON("data/csvjson_adjusted_final.json");
+// I could not get var markers = getJSON (shown above) to work so I added in straight into the main js here
+// the remainder of the code lives at the bottom of this block
 var markers = {
   "1": {
     "arenaAdjustedShotDistance": 52,
@@ -38799,13 +38803,7 @@ var markers = {
   }
 }
 
-
-
-
-// var markers = $.getJSON("data/csvjson_adjusted_final.json");
-
-
-// Define all variables
+// define groups for layer control
 var layerWrist = L.layerGroup().addTo(map);
 var layerSlap = L.layerGroup().addTo(map);
 var layerBack = L.layerGroup().addTo(map);
@@ -38814,6 +38812,7 @@ var layerSnap = L.layerGroup().addTo(map);
 var layerTip = L.layerGroup().addTo(map);
 var layerWrap = L.layerGroup().addTo(map);
 
+// define variables for details
 var titlesList = [];  
 var idToLayer = {};
 var titleToId = {};
@@ -38824,7 +38823,7 @@ var idToOther_0 = {};
 var idToOther_1 = {};
 var idToOther_2 = {};
 
-// Declare updatePanel: open panel, update panel button inner HTML and update content with updateContent(), depending on mId
+// declare updatePanel: open panel, update panel button inner HTML and update content with updateContent(), on id
 var updatePanel = function(mId){
   // Open panel
   $('#panel').addClass('active');
@@ -38837,9 +38836,6 @@ var updatePanel = function(mId){
   var markerOther_0 = idToOther_0[mId];
   var markerOther_1 = idToOther_1[mId];
   var markerOther_2 = idToOther_2[mId];
-
-
-
 
   // Update panel content with marker title and text
   $('#panelTitle').text(markerTitle);
@@ -38861,8 +38857,7 @@ var markerOnClick = function(){
   updatePanel(mId);
 };
 
-
-
+// for each marker filter for event and set symbology
 $.each(markers, function(key, val) {
 
   if (val['event'] == 'GOAL'){
@@ -38908,9 +38903,9 @@ $.each(markers, function(key, val) {
     }
 
 
-    // Set popup options
+    // Set popup details
     var popupContent =   val['shooterName'] + ', ' + val['playerPositionThatDidEvent'] + ' | Shot Type: ' + val['shotType'];
-    // Bind popup to marker click
+    // bind popup
     marker.bindPopup(popupContent);
 
      // Create a list of marker titles 
@@ -38918,41 +38913,34 @@ $.each(markers, function(key, val) {
 
     // Call markerOnClick when event click on marker 
     marker.on('click', markerOnClick);
-    
 
     console.log(marker)
  
-    // Create a layer for each marker that is part of the feature group of layers  
-    
 
-    // -- Append dictionaries --
-    //{key:'title',value:id}  
+    // append dictionaries 
+    // {key:'title',value:id}  
     titleToId[val['shooterName']] = key;
-    //{key:id,value:'title'} 
     idToTitle[key] = 'Player - ' + val['shooterName'];  
-    // {key:id,value:'text'}  
     idToText[key] = 'Shot Type: ' + val['shotType'];
     idToOther[key] = 'Left or Right Handed: ' + val['shooterLeftRight'];
     idToOther_0[key] = 'Shot Result: ' + val['event'];
     idToOther_1[key] = 'Position: ' + val['playerPositionThatDidEvent'];
     idToOther_2[key] = 'Distance: ' + val['arenaAdjustedShotDistance'];
-
 });
 
-
-
-// Open/Close button (map): toggle panel & update #panelBtn
+// Open/Close button 
 var togglePanel = function() {
   $('#panel').toggleClass('active'); 
   $("#panelBtn").text(($("#panelBtn").text() == 'Open Info Panel >') ? '< Close Info Panel' : 'Open Info Panel >'); 
 }
 
-// Close button (panel): close panel & update #panelBtn
+// Close button 
 var closePanel = function() {
   $('#panel').removeClass('active');
   $('#panelBtn').text('Open Info Panel >');
 }
 
+// create overlay to use in layer conrol
 var overlayMaps = {
   "Wrist": layerWrist,
   "Slap": layerSlap,
@@ -38963,10 +38951,11 @@ var overlayMaps = {
   "Snap": layerSnap
 };
 
-
+// create layer control
 var layerControl = L.control.layers(null, overlayMaps ,null,{collapsed:false}).addTo(map);
 $(".leaflet-control-layers-overlays").prepend("<label><em>Shot Types:</em></label>");
 
 $(document).ready(createMap);
 
-// Credit Fanny Kassapian resources for working with non-geographic maps
+// credit Fanny Kassapian resources for working with non-geographic maps
+// credit moneypuck for shot data
