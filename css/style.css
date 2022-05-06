@@ -52,7 +52,7 @@ footer{
 }
 
 .leaflet-control-layers-toggle {
-  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.8)),url(/assets/icons8-layers-30.png);
+  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.8)),url(assets/icons8-layers-30.png);
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
@@ -98,7 +98,7 @@ footer{
     bottom: 0;
     overflow-y: scroll;
     transition: all 0.4s; 
-    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)),url(/assets/seattlekraken-logo.png);
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)),url(assets/seattlekraken-logo.png);
     background-size: 90%;
   }
 #panel::backdrop{
