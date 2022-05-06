@@ -5,11 +5,13 @@
 //create  map
 var map = L.map('map', {
     crs: L.CRS.Simple,
-    minZoom: 3,
-    maxZoom: 6,
+    minZoom: 2.4,
+    maxZoom: 4,
+    layers: layerWrist, layerSlap, layerBack, layerDefl, layerSnap, layerTip, layerWrap
 });
 map.zoomControl.setPosition('topleft');
-var bounds = [[50,104], [-50,-102]];
+
+var bounds = [[-52,-103], [52,103]];
 map.fitBounds(bounds);
 
 var image = L.imageOverlay('assets/hockey-rinks.png', bounds).addTo(map);
@@ -38797,14 +38799,21 @@ var markers = {
   }
 }
 
-var markerpoint = L.icon({
-    iconUrl: 'assets/icons8-circle-10.png'
-})
+
+var markerpoint = L.icon({iconUrl: 'assets/icons8-circle-10.png'});
+
 // var markers = $.getJSON("data/csvjson_adjusted_final.json");
 
 
 // Define all variables
-var layers = L.layerGroup().addTo(map);
+var layerWrist = L.layerGroup().addTo(map);
+var layerSlap = L.layerGroup().addTo(map);
+var layerBack = L.layerGroup().addTo(map);
+var layerDefl = L.layerGroup().addTo(map);
+var layerSnap = L.layerGroup().addTo(map);
+var layerTip = L.layerGroup().addTo(map);
+var layerWrap = L.layerGroup().addTo(map);
+
 var titlesList = [];  
 var idToLayer = {};
 var titleToId = {};
@@ -38812,6 +38821,8 @@ var idToTitle = {};
 var idToText = {};
 var idToOther = {};
 var idToOther_0 = {};
+var idToOther_1 = {};
+var idToOther_2 = {};
 
 // Declare updatePanel: open panel, update panel button inner HTML and update content with updateContent(), depending on mId
 var updatePanel = function(mId){
@@ -38824,11 +38835,19 @@ var updatePanel = function(mId){
   var markerText = idToText[mId];
   var markerOther = idToOther[mId];
   var markerOther_0 = idToOther_0[mId];
+  var markerOther_1 = idToOther_1[mId];
+  var markerOther_2 = idToOther_2[mId];
+
+
+
+
   // Update panel content with marker title and text
   $('#panelTitle').text(markerTitle);
   $('#panelText').text(markerText);
   $('#panelOther').text(markerOther);
   $('#panelOther_0').text(markerOther_0);
+  $('#panelOther_1').text(markerOther_1);
+  $('#panelOther_2').text(markerOther_2);
 };
 
 // Declare markerOnClick: 
@@ -38849,11 +38868,40 @@ $.each(markers, function(key, val) {
                         markerText: val['shotType'],
                         markerOther: val['shooterLeftRight'],
                         markerOther_0: val['event'],
-                        icon: markerpoint};
-    var marker = L.marker(val['coords'],  markerOptions).addTo(map);
-    console.log(marker)
+                        markerOther_1: val['playerPositionThatDidEvent'],
+                        markerOther_2: val['arenaAdjustedShotDistance'],
+                        icon: markerpoint
+                      };
+                        
+    var marker = L.marker(val['coords'],  markerOptions)
+    
+
+    if (val['shotType'] == 'SLAP'){
+      layerSlap.addLayer(marker);
+
+    } else if (val['shotType'] == 'WRIST'){
+      layerWrist.addLayer(marker);
+
+    } else if (val['shotType'] == 'BACK'){
+      layerBack.addLayer(marker);
+
+    } else if (val['shotType'] == 'DEFL'){
+      layerDefl.addLayer(marker);
+
+    } else if (val['shotType'] == 'SNAP'){
+      layerSnap.addLayer(marker);
+
+    } else if (val['shotType'] == 'TIP'){
+      layerTip.addLayer(marker);
+
+    } else if (val['shotType'] == 'WRAP'){
+      layerWrap.addLayer(marker);
+    }
+
+
     // Set popup options
-    var popupContent =   val['shooterName'] + ', Shot Type: ' + val['shotType'] + ', Result: ' + val['event'] + ', ' + val['shooterLeftRight'] + ' Handed';
+    var popupContent =   val['shooterName'] + ', ' + val['playerPositionThatDidEvent'] + ' | Shot Type: ' + val['shotType'] + 
+    ' | Result: ' + val['event'] + ' | ' + val['shooterLeftRight'] + ' Handed | ' + 'Distance: ' + val['arenaAdjustedShotDistance'];
     // Bind popup to marker click
     marker.bindPopup(popupContent);
 
@@ -38862,9 +38910,12 @@ $.each(markers, function(key, val) {
 
     // Call markerOnClick when event click on marker 
     marker.on('click', markerOnClick);
+    
 
+    console.log(marker)
+ 
     // Create a layer for each marker that is part of the feature group of layers  
-    layers.addLayer(marker)
+    
 
     // -- Append dictionaries --
     //{key:'title',value:id}  
@@ -38873,11 +38924,12 @@ $.each(markers, function(key, val) {
     idToTitle[key] = 'Player - ' + val['shooterName'];  
     // {key:id,value:'text'}  
     idToText[key] = 'Shot Type: ' + val['shotType'];
-    idToOther[key] = 'Left or Right Handed Player: ' + val['shooterLeftRight'];
+    idToOther[key] = 'Left or Right Handed: ' + val['shooterLeftRight'];
     idToOther_0[key] = 'Shot Result: ' + val['event'];
+    idToOther_1[key] = 'Position: ' + val['playerPositionThatDidEvent'];
+    idToOther_2[key] = 'Distance: ' + val['arenaAdjustedShotDistance'];
 
 });
-
 
 
 // Open/Close button (map): toggle panel & update #panelBtn
@@ -38891,6 +38943,20 @@ var closePanel = function() {
   $('#panel').removeClass('active');
   $('#panelBtn').text('Open Info Panel >');
 }
+
+var overlayMaps = {
+  "Wrist": layerWrist,
+  "Slap": layerSlap,
+  "Back": layerBack,
+  "Deflect": layerDefl,
+  "Tip": layerTip,
+  "Wrap": layerWrap,
+  "Snap": layerSnap
+};
+
+
+var layerControl = L.control.layers(null, overlayMaps ,null,{collapsed:false}).addTo(map);
+$(".leaflet-control-layers-overlays").prepend("<label><em>Shot Types:</em></label>");
 
 $(document).ready(createMap);
 

@@ -22,12 +22,18 @@
 
 <body>
   
-  <div class="fixed-header">
-    <div class="container">
-        <h1><img src="/assets/Seattle_Kraken_logo.png" alt="" width="10%" height="10%" role="img">Seattle Kraken</h1>
-        
+  <div class="fixed-header row">
+    <div>
+        <h2 class= 'desc_t'><img src="/assets/Seattle_Kraken_logo.png" alt="" width="10%" height="10%" role="img">Seattle Kraken Shot Map</h2>
+          <h4 class="desc_t col-lg-6">In 2018 the NHL granted Seatle the opportunity for an expansion franchise, and in 2021 the Seattle Kraken made their season debut.  
+            Below is a shot map for their 2021 season.  Utilize the filters and information panel to look thought the distribution of 
+            shots by the Seattle Kraken.  Player and Team data was collected from <a href="https://www.moneypuck.com/data.htm">moneypuck.com</a></h4>
+          
     </div>
 </div>
+
+
+
 <!-- Panel button -->
   <button type="button" id="panelBtn" class="btn btn-danger" onclick="togglePanel();">Open Info Panel ></button>
 <!-- /Panel button -->
@@ -39,18 +45,26 @@
       &times;
     </button>
     <p id="panelContent">
-    <h2 id="panelTitle">Player Name</h2>
-    <span id="panelText">Shot Type</span><br>
-    <span id="panelOther_0">Shot Result</span><br>
-    <span id="panelOther">Left or Right Handed Player</span> 
-       
+    <h3 id="panelTitle">Player Name</h3> 
+    <h4 id="panelOther_1">Position</h4>
+    <h4 id="panelText">Shot Type</h4>
+    <h4 id="panelOther_0">Shot Result</h4>
+    <h4 id="panelOther_2">Distance</h4>
+    <h4 id="panelOther">Left / Right Handed</h4><br>
+    <p style="position: fixed; bottom: 3px; word-wrap: break-word;">Positions Key: C - Center, L - Left Wing, R - Right Wing, D - Defence</p>
+
     </p>
   </div>
 <!-- /Panel -->  
 
   <div id = "map"></div>
   
-  
+  <footer>
+    <div class="container">
+      <h5 class= "text-center">Created 2022 - Mackenzie Kane</h5>
+      
+  </div>
+  </footer>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script type="text/javascript" src="lib/jquery3_6_0.js"></script>
   <script src="js/main.js"></script>

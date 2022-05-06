@@ -2,18 +2,46 @@
   width: 100%;
   position: fixed;        
   background:  rgb(0, 20, 37);
-  padding: 50px 0;
+  padding: 10px;
   color: rgb(150, 216, 216, .85);
-}
-
-.fixed-header{
   top: 0;
 }
 
+
+
+.desc_t{
+    display: inline-block;
+    align-items: center;
+    word-wrap: normal;
+    margin: 0em;
+}
+
+footer{
+  width: 100%;
+  position:fixed;        
+  background:  rgba(196, 196, 196, 0.85); 
+  padding: 20px 0;
+  color: rgb(0, 20, 37);
+  bottom: 0px;
+}
+
+
+
+.leaflet-control-layers {
+  margin: 0.1em 0;
+  font-size:25pt;
+  font-family: monospace;
+  font-size: 18pt;
+}
+
+.leaflet-control-layers-toggle {
+  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.8)),url(/assets/icons8-layers-30.png);
+}
+
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
-    background-color:rgb(150, 216, 216, .85);
+    background-color:rgb(150, 216, 216, .9);
     margin: 0.1em 0;
-    font-size: xx-large;
+    font-size: large;
     font-family: monospace;
     font-weight: bold;
     text-align-last: center;
@@ -21,11 +49,11 @@
 
 
 #map {
-    height: 800px;
-    width: 1640px;
-    position: fixed;
-    right: 10px;
-    bottom: 0px;
+    height: 540px;
+    width: 1070px;
+    position: absolute;
+    right: 300px;
+    bottom: 150px;
     z-index: 401;
 }
   
@@ -38,10 +66,10 @@
   /* Open/close panel button */
   #panelBtn{
     position:fixed;
-    top: 270px;
+    top: 210px;
     z-index: 401;
     font-family: monospace;
-    font-size: xx-large;
+    font-size: large;
   } /* allows panel button to sit on top of content */
   
   #panel{
@@ -49,11 +77,12 @@
     z-index: 401;
     width: 100vw;
     left: -500px;
-    top: 325px;
+    top: 250px;
     bottom: 0;
     overflow-y: scroll;
     transition: all 0.5s; 
-    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),url(/assets/Seattle_Kraken_logo.png);
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)),url(/assets/seattlekraken-logo.png);
+    background-size: 90%;
   }
 #panel::backdrop{
     content: "";
