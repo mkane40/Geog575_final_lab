@@ -11,7 +11,7 @@ var map = L.map('map', {
 });
 map.zoomControl.setPosition('topleft');
 
-var bounds = [[-52,-103], [52,103]];
+var bounds = [[-52,-104], [52,102]];
 map.fitBounds(bounds);
 
 var image = L.imageOverlay('assets/hockey-rinks.png', bounds).addTo(map);
@@ -38800,7 +38800,7 @@ var markers = {
 }
 
 
-var markerpoint = L.icon({iconUrl: 'assets/icons8-circle-10.png'});
+
 
 // var markers = $.getJSON("data/csvjson_adjusted_final.json");
 
@@ -38862,7 +38862,17 @@ var markerOnClick = function(){
 };
 
 
+
 $.each(markers, function(key, val) {
+
+  if (val['event'] == 'GOAL'){
+    markerpoint = L.icon({iconUrl:  'assets/goalicon.png'});
+  } else if (val['event'] == 'MISS'){
+    markerpoint = L.icon({iconUrl:  'assets/missicon.png'});
+  } else if (val['event'] == 'SHOT'){
+    markerpoint = L.icon({iconUrl:  'assets/shoticon.png'});
+  } 
+
     var markerOptions = {markerId: key,
                         markerTitle: val['shooterName'],
                         markerText: val['shotType'],
@@ -38872,10 +38882,9 @@ $.each(markers, function(key, val) {
                         markerOther_2: val['arenaAdjustedShotDistance'],
                         icon: markerpoint
                       };
-                        
+
     var marker = L.marker(val['coords'],  markerOptions)
     
-
     if (val['shotType'] == 'SLAP'){
       layerSlap.addLayer(marker);
 
@@ -38900,8 +38909,7 @@ $.each(markers, function(key, val) {
 
 
     // Set popup options
-    var popupContent =   val['shooterName'] + ', ' + val['playerPositionThatDidEvent'] + ' | Shot Type: ' + val['shotType'] + 
-    ' | Result: ' + val['event'] + ' | ' + val['shooterLeftRight'] + ' Handed | ' + 'Distance: ' + val['arenaAdjustedShotDistance'];
+    var popupContent =   val['shooterName'] + ', ' + val['playerPositionThatDidEvent'] + ' | Shot Type: ' + val['shotType'];
     // Bind popup to marker click
     marker.bindPopup(popupContent);
 
@@ -38932,6 +38940,7 @@ $.each(markers, function(key, val) {
 });
 
 
+
 // Open/Close button (map): toggle panel & update #panelBtn
 var togglePanel = function() {
   $('#panel').toggleClass('active'); 
@@ -38960,3 +38969,4 @@ $(".leaflet-control-layers-overlays").prepend("<label><em>Shot Types:</em></labe
 
 $(document).ready(createMap);
 
+// Credit Fanny Kassapian resources for working with non-geographic maps

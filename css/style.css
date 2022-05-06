@@ -3,10 +3,8 @@
   position: fixed;        
   background:  rgb(0, 20, 37);
   padding: 10px;
-  color: rgb(150, 216, 216, .85);
   top: 0;
 }
-
 
 
 .desc_t{
@@ -14,13 +12,32 @@
     align-items: center;
     word-wrap: normal;
     margin: 0em;
+    color: rgb(150, 216, 216, .85);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.desc{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.key_{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: inline-block;
+  font-size: medium;
+}
+
+.desc_i{
+  position: fixed;
+  right: 20px;
+  top: 20px;
 }
 
 footer{
   width: 100%;
   position:fixed;        
   background:  rgba(196, 196, 196, 0.85); 
-  padding: 20px 0;
+  padding: 2px 0;
   color: rgb(0, 20, 37);
   bottom: 0px;
 }
@@ -66,10 +83,10 @@ footer{
   /* Open/close panel button */
   #panelBtn{
     position:fixed;
-    top: 210px;
+    top: 230px;
     z-index: 401;
-    font-family: monospace;
-    font-size: large;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: medium;
   } /* allows panel button to sit on top of content */
   
   #panel{
@@ -77,10 +94,10 @@ footer{
     z-index: 401;
     width: 100vw;
     left: -500px;
-    top: 250px;
+    top: 270px;
     bottom: 0;
     overflow-y: scroll;
-    transition: all 0.5s; 
+    transition: all 0.4s; 
     background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)),url(/assets/seattlekraken-logo.png);
     background-size: 90%;
   }
